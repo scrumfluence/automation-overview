@@ -17,6 +17,10 @@ describe('Registration Test', function () {
         browser.wait(ec.visibilityOf(registerButton), 15000);
     });
 
+    it('Wait', function () {
+        browser.sleep(3000);
+    });
+
     it('Type in username', function () {
 
         let textbox = element(by.name('email'));
@@ -48,6 +52,6 @@ describe('Registration Test', function () {
     });
 
     it('Wait', function () {
-        browser.sleep(10000);
+        browser.sleep(3000);
     });
 });
