@@ -1,22 +1,33 @@
 
 const ec = protractor.ExpectedConditions;
 
-describe( "Get Repositories", function () {
+describe("Get Repositories", function () {
 
-    beforeAll( function () {
+    beforeAll(function () {
 
         browser.ignoreSynchronization = true;
-    } );
+    });
 
-    it( "Navigate To GitHub Page", function () {
+    it("Navigate To GitHub Page", function () {
 
-        browser.get('https://github.com/myleafhopper?tab=repositories');
-    } );
+        browser.get('https://github.com/google?tab=repositories');
+    });
 
-    it( "Verify Filter Textbox Is Visible", function () {
+    it("Verify Filter Textbox Is Visible", function () {
 
-        let button = element(by.id('your-repos-filter'));
-        browser.wait(ec.visibilityOf(button), 15000);
-    } );
+        let listContainer = element(by.id('user-repositories-list'));
+        browser.wait(ec.visibilityOf(listContainer), 15000);
+    });
 
-} );
+    it("Get All Repository Names", function () {
+
+        let links = element.all(by.xpath("//*[@id='user-repositories-list']//a"));
+        links.each(function (link, index) {
+
+            link.getText().then(function (text) {
+                console.log(index, text);
+            });
+        });
+    });
+
+});
