@@ -1,3 +1,8 @@
+
+/* --------------------------------------------------
+COMMAND: protractor ui_tests/config.js
+-------------------------------------------------- */
+
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: ['scripts/get_repositories.js'],
