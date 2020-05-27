@@ -4,10 +4,14 @@ const chai = require('chai');
 const expect = chai.expect;
 const data = {};
 
+/* --------------------------------------------------
+Chai Expect Documentation Link: https://www.chaijs.com/api/bdd/
+-------------------------------------------------- */
+
 describe('SERVER TEST', function () {
 
     it('Get All Movies', function (done) {
-        
+
         const config = {
             url: 'http://localhost:3000/movies',
             method: 'get'
@@ -24,9 +28,9 @@ describe('SERVER TEST', function () {
         });
 
     }, 10000);
-    
+
     it('Add A New Movie', function (done) {
-        
+
         const config = {
             url: 'http://localhost:3000/movie',
             method: 'post',
@@ -42,21 +46,24 @@ describe('SERVER TEST', function () {
 
         request(config, (error, response, body) => {
 
-            expect(body.title).to.equal('Titanic');
-            expect(body.director).to.equal('Chris');
-            expect(body.rating).to.equal('R');
-            expect(body.producer).to.equal('Chris');
-            expect(body.revenue).to.equal('1B');
-            expect(body.rotten_tomato_rating).to.equal('8.8');
+            expect(body).to.be.an('object').that.has.all.
+                keys('id', 'title', 'director', 'rating', 'producer', 'revenue', 'rotten_tomato_rating');
+
+            expect(body.title).to.equal(config.json.title);
+            expect(body.director).to.equal(config.json.director);
+            expect(body.rating).to.equal(config.json.rating);
+            expect(body.producer).to.equal(config.json.producer);
+            expect(body.revenue).to.equal(config.json.revenue);
+            expect(body.rotten_tomato_rating).to.equal(config.json.rotten_tomato_rating);
             expect(response.statusCode).to.equal(200);
 
             done();
         });
-        
+
     }, 10000);
 
     it('Get All Movies', function (done) {
-        
+
         const config = {
             url: 'http://localhost:3000/movies',
             method: 'get'

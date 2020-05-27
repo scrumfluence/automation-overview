@@ -1,4 +1,3 @@
-const request = require("request");
 
 const ec = protractor.ExpectedConditions;
 
@@ -39,19 +38,4 @@ describe("Get Repositories", function () {
             expect(text).toBe('Alphabetize');
         } );
     });
-
-    // it("Get Stock Data", function (done) {
-
-    //     const url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo';
-    //     request(url, function (error, response, body) {
-
-    //         const responseBody = JSON.parse(body);
-    //         expect(responseBody['Meta Data']['2. Symbol']).toBe('IBM');
-
-    //         // const responseBody = pm.response.json();
-    //         // pm.expect(responseBody['Meta Data']['2. Symbol']).to.eql('IBM');
-
-    //         done();
-    //     });
-    // });
 });
