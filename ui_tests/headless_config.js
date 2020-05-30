@@ -1,6 +1,6 @@
 
 /* --------------------------------------------------
-COMMAND: protractor ui_tests/config.js
+COMMAND: protractor ui_tests/headless_config.js
 -------------------------------------------------- */
 
 exports.config = {
@@ -9,7 +9,10 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     shardTestFiles: true,
-    maxInstances: 1
+    maxInstances: 1,
+    chromeOptions: {
+      args: ["--headless", "--disable-gpu", "--window-size=800x600"]
+    }
 
   },
 };
